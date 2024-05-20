@@ -5,7 +5,7 @@ import Paper from 'material-ui/Paper';
 import styled from 'styled-components';
 import { saveAs } from 'file-saver';
 
-import Art from '../lib';
+import Art from 'generate-game-art';
 import IconBtn from './IconBtn';
 
 import { invert, getRandom } from './utils';
@@ -23,7 +23,7 @@ class Example extends Component {
     more: false,
     palette: ['#21242b', '#61dafb', '#6d6d6d', '#292c34', '#fff'],
     stopped: false,
-    mounted: false
+    mounted: false,
   };
 
   more = () => this.setState({ more: !this.state.more });
@@ -63,7 +63,7 @@ class Example extends Component {
 
     this.art
       .ref()
-      .toBlob(blob => saveAs(blob, `${this.art.metadata().seed}.png`));
+      .toBlob((blob) => saveAs(blob, `${this.art.metadata().seed}.png`));
   };
 
   update = (i, color) => {
@@ -72,7 +72,7 @@ class Example extends Component {
     this.setState({ palette: newPallete });
   };
 
-  link = ref => {
+  link = (ref) => {
     this.art = ref;
 
     if (!this.state.mounted)
@@ -139,10 +139,10 @@ class Example extends Component {
       <Palette>
         {this.state.palette.map((color, i) => (
           <Input
-            onChange={e => this.update(i, e.target.value)}
+            onChange={(e) => this.update(i, e.target.value)}
             style={{
               backgroundColor: this.state.palette[i],
-              color: invert(this.state.palette[i])
+              color: invert(this.state.palette[i]),
             }}
             value={this.state.palette[i]}
           />
@@ -174,8 +174,9 @@ class Example extends Component {
             </Row>
 
             <Animated items>
-              {more &&
-                custom && <Animated item>{this.renderPalette()}</Animated>}
+              {more && custom && (
+                <Animated item>{this.renderPalette()}</Animated>
+              )}
             </Animated>
           </Actions>
         </Container>
@@ -196,7 +197,7 @@ const Palette = styled.div`
 
 const Canvas = styled(Paper).attrs({ square: true })`
   box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1) !important;
-  height: ${props => props.size}px;
+  height: ${(props) => props.size}px;
 `;
 
 const Container = styled.div`
