@@ -10,8 +10,6 @@ import IconBtn from './IconBtn';
 
 import { invert, getRandom } from './utils';
 
-import './example.css';
-
 const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
 class Example extends Component {
