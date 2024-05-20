@@ -7,7 +7,7 @@ import vec2 from 'gl-vec2';
 import createPixels from './createPixels';
 import createRange from './createRange';
 import createSphere from './createSphere';
-import { setupCanvas, generate } from './main';
+import { generate } from './main';
 
 export default (opt = {}) => {
   const randFunc = opt.random || Math.random;

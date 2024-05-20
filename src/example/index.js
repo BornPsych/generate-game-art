@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 import Animated from 'react-animated-transitions';
-import Paper from 'material-ui/Paper';
+import Paper from '@mui/material/Paper';
 import styled from 'styled-components';
 import { saveAs } from 'file-saver';
 
-import Art from 'generate-game-art';
+import Art from '../lib';
 import IconBtn from './IconBtn';
 
 import { invert, getRandom } from './utils';
