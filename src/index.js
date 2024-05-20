@@ -1,3 +1,6 @@
+import React from 'react';
+import { render } from 'react-dom';
+
 import Example from './example';
 
-export default Example;
+render(<Example />, document.getElementById('root'));
