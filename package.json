@@ -2,7 +2,7 @@
   "license": "MIT",
   "name": "generate-game-art",
   "description": "Generative game art with React.",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "dist/index.js",
   "devDependencies": {
     "babel-cli": "6.26.0",
