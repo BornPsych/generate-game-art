@@ -1,0 +1,19 @@
+export default [
+  require('./maps/architecture.jpg'),
+  require('./maps/church2.jpg'),
+  require('./maps/city2.jpg'),
+  require('./maps/city5.jpg'),
+  require('./maps/eye.jpg'),
+  require('./maps/fractal1.jpg'),
+  require('./maps/fractal2.jpg'),
+  require('./maps/geo1.jpg'),
+  require('./maps/geo3.jpg'),
+  require('./maps/geo4.jpg'),
+  require('./maps/geo5.jpg'),
+  require('./maps/map7.jpg'),
+  require('./maps/nature1.jpg'),
+  require('./maps/pat1.jpg'),
+  require('./maps/scifi.jpg'),
+  require('./maps/sym3.jpg'),
+  require('./maps/sym6.jpg')
+];
