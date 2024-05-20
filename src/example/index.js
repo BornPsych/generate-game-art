@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import styled from 'styled-components';
 import { saveAs } from 'file-saver';
 
-import Art from '../lib';
+import Art from 'generate-game-art';
 import IconBtn from './IconBtn';
 
 import { invert, getRandom } from './utils';
