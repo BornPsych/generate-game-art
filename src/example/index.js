@@ -80,22 +80,6 @@ class Example extends Component {
   };
 
   renderArt = () => {
-    // this.art = {
-    //   metadata: () => ({ palette: this.state.palette }),
-    //   draw: () => null,
-    //   stop: () => null
-    // };
-
-    // return (
-    //   <div
-    //     style={{
-    //       backgroundColor: this.state.palette[1], // #eee
-    //       height: 512,
-    //       width: 512
-    //     }}
-    //   />
-    // );
-
     if (this.state.full) {
       return (
         <Art
@@ -154,9 +138,6 @@ class Example extends Component {
   };
 
   render() {
-    // <IconBtn name="Input" onClick={this.input} />
-    // <IconBtn name="Photo" onClick={this.upload} />
-
     const { more, custom } = this.state;
 
     return (
