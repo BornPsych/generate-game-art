@@ -7,6 +7,7 @@ import vec2 from 'gl-vec2';
 import createPixels from './createPixels';
 import createRange from './createRange';
 import createSphere from './createSphere';
+import { setupCanvas, generate } from './main';
 
 export default (opt = {}) => {
   const randFunc = opt.random || Math.random;
@@ -29,7 +30,7 @@ export default (opt = {}) => {
 
   const heightMapImage = createPixels(ctx, backgroundImage, {
     scale: opt.backgroundScale,
-    fillStyle: opt.backgroundFill
+    fillStyle: opt.backgroundFill,
   });
 
   const heightMap = heightMapImage.data;
@@ -46,7 +47,7 @@ export default (opt = {}) => {
     p.duration = random(1, 500);
     p.time = random(0, p.duration);
     p.velocity = [random(-1, 1), random(-1, 1)];
-    p.speed = random(0.5, 2) * dpr;
+    p.speed = random(2.5, 2) * dpr;
 
     // we actually include the background color here
     // this means some strokes may seem to "erase" the other
@@ -63,10 +64,14 @@ export default (opt = {}) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  const step = dt => {
+  let runGenerate = true;
+  const step = (dt) => {
     time += dt;
-
-    particles.forEach(particle => {
+    if (runGenerate) {
+      generate(canvas, ctx);
+      runGenerate = false;
+    }
+    particles.forEach((particle) => {
       const p = particle;
 
       const x = p.position[0];
@@ -116,6 +121,6 @@ export default (opt = {}) => {
   return {
     clear,
     step,
-    debugLuma: ctx.putImageData(heightMapImage, 0, 0)
+    debugLuma: ctx.putImageData(heightMapImage, 0, 0),
   };
 };

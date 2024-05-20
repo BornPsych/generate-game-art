@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import createConfig from './createConfig';
 import createRenderer from './createRenderer';
+// import { setupCanvas, generate } from './main';
 
 export default class Art extends Component {
   static propTypes = {
@@ -12,17 +13,20 @@ export default class Art extends Component {
     palette: PropTypes.arrayOf(PropTypes.string).isRequired,
     seed: PropTypes.string,
     height: PropTypes.number,
-    width: PropTypes.number
+    width: PropTypes.number,
   };
 
   static defaultProps = {
     seed: undefined,
     height: window.innerHeight,
-    width: window.innerWidth
+    width: window.innerWidth,
   };
 
-  refresh = config => {
+  refresh = (config) => {
     if (this.loop) this.loop.stop();
+    setTimeout(() => {
+      this.loop.stop();
+    }, 2500);
 
     this.loop = createLoop();
 
@@ -33,7 +37,7 @@ export default class Art extends Component {
       {},
       {
         backgroundImage: background,
-        context
+        context,
       },
       config
     );
@@ -91,7 +95,7 @@ export default class Art extends Component {
       palettes: [this.props.palette],
       seed: this.props.seed,
       height: this.props.height,
-      width: this.props.width
+      width: this.props.width,
     });
 
     this.refresh(config);
@@ -115,6 +119,6 @@ export default class Art extends Component {
   };
 
   render() {
-    return <canvas ref={ref => (this.canvas = ref)} />;
+    return <canvas ref={(ref) => (this.canvas = ref)} />;
   }
 }

@@ -1,13 +1,9 @@
 {
   "license": "MIT",
-  "name": "react-color-wander",
-  "description": "Generative art with React.",
+  "name": "generate-game-art",
+  "description": "Generative game art with React.",
   "version": "0.0.2",
   "main": "dist/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sonaye/react-color-wander.git"
-  },
   "devDependencies": {
     "@material-ui/icons": "1.0.0-beta.42",
     "babel-cli": "6.26.0",
@@ -63,6 +59,5 @@
     "seed-random": "2.2.0",
     "simplex-noise": "2.4.0",
     "smoothstep": "1.0.1"
-  },
-  "homepage": "https://sonaye.github.io/react-color-wander"
+  }
 }

@@ -12,8 +12,8 @@ const CORNERS_POSITIONS = [
 ];
 
 const SHAPES = [Arc, Circle, Triangle];
-const overlay = document.getElementById('overlay');
-function setupCanvas(canvas) {
+
+export function setupCanvas(canvas) {
   // Get the device pixel ratio, falling back to 1.
   const dpr = window.devicePixelRatio || 1;
   // Get the size of the canvas in CSS pixels.
@@ -29,9 +29,6 @@ function setupCanvas(canvas) {
   return ctx;
 }
 
-const canvas = document.getElementById('canvas');
-let ctx = setupCanvas(canvas);
-
 function getSeeds() {
   return {
     shape: Math.random() * 2 ** 32,
@@ -42,7 +39,7 @@ function getSeeds() {
   };
 }
 
-let SEEDS = getSeeds();
+// let SEEDS = getSeeds();
 
 function getAdjacentCoordinate(distance, gutter, coordinates, direction) {
   const { T, R, B, L, TL, TR, BL, BR } = DIRECTIONS;
@@ -87,7 +84,8 @@ function getAdjacentCoordinate(distance, gutter, coordinates, direction) {
 const SIDE = 20;
 const GUTTER = 1;
 
-function generate(seeds) {
+export function generate(canvas, ctx) {
+  let seeds = getSeeds();
   const horizontalCount = Math.ceil(canvas.width / SIDE);
   const verticalCount = Math.ceil(canvas.height / SIDE);
 
@@ -136,37 +134,3 @@ function generate(seeds) {
   };
   renderRows();
 }
-
-function hideOverlay() {
-  overlay.classList.add('hide');
-}
-
-function clickListener() {
-  hideOverlay();
-  SEEDS = getSeeds();
-  requestAnimationFrame(() => {
-    generate(SEEDS);
-  });
-}
-
-function keyListener(e) {
-  if (e.code === 'Space') {
-    hideOverlay();
-    SEEDS = getSeeds();
-    requestAnimationFrame(() => {
-      generate(SEEDS);
-    });
-  }
-}
-
-function resizeListener() {
-  ctx = setupCanvas(canvas);
-  generate(SEEDS);
-}
-
-generate(SEEDS);
-
-canvas.addEventListener('click', clickListener);
-overlay.addEventListener('click', clickListener);
-document.addEventListener('keypress', keyListener);
-window.addEventListener('resize', resizeListener);
