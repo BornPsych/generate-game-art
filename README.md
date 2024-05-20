@@ -1,4 +1,4 @@
-# react-color-wander
+# generate-game-art
 
 # Installation
 
