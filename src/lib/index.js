@@ -24,8 +24,14 @@ export default class Art extends Component {
 
   refresh = (config) => {
     if (this.loop) this.loop.stop();
-    setTimeout(() => {
+
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+
+    this.timeoutId = setTimeout(() => {
       this.loop.stop();
+      this.timeoutId = null;
     }, 2500);
 
     this.loop = createLoop();
