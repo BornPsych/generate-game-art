@@ -16,12 +16,6 @@ export default class Art extends Component {
     width: PropTypes.number,
   };
 
-  static defaultProps = {
-    seed: undefined,
-    height: window.innerHeight,
-    width: window.innerWidth,
-  };
-
   refresh = (config) => {
     if (this.loop) this.loop.stop();
 
@@ -37,7 +31,7 @@ export default class Art extends Component {
     this.loop = createLoop();
 
     const context = this.canvas.getContext('2d');
-    const background = new window.Image();
+    const background = new Image();
 
     const opts = Object.assign(
       {},
